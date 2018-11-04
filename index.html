@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Matching Pairs - Game Dolphin</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="external/phaser.min.js"></script>
+	<script src="js/Boot.js"></script>
+	<script src="js/Preloader.js"></script>
+	<script src="js/MainMenu.js"></script>
+	<script src="js/Game.js"></script>	
+	<script src="js/client.js"></script>
+	<script src="js/phaser-input.js"></script>
+</head>
+<style type="text/css">
+	body{
+		overflow: hidden;
+	}
+	#gameContainer{
+		background-color: black;
+		position: relative;
+    	top: 50%;
+    	/*margin-top: -380px;*/
+	}
+	canvas{ 
+		/*background-image: url('/assets/clean.png');*/
+		border: 2px solid gray;
+	}
+</style>
+<body style="margin:0px;" bgcolor="#000000">
+<div></div>
+<div id="gameContainer"></div>
+<!-- <canvas id = "sss" style="width: 100px height: 30px;"></canvas> -->
+<script type="text/javascript">
+
+var firstPlay = true;
+var isPlay = false;
+var bomb_counter = 1;
+var temp_counter = 1;
+var show_next = 1;
+var counter = 1;
+var profit;
+var flag = 0;
+var bet_number1;
+var game;
+var str_hash;
+var g_next_bonus;
+var g_stake;
+var g_bet;
+// var bet_number;
+
+window.onload = function() {
+	game = new Phaser.Game(640,1000, Phaser.AUTO, 'gameContainer');
+
+	game.state.add('Boot', BasicGame.Boot);
+	game.state.add('Preloader', BasicGame.Preloader);
+	game.state.add('MainMenu', BasicGame.MainMenu);
+	game.state.add('Game', BasicGame.Game);
+	game.state.add('EndScreen',BasicGame.EndScreen);
+	
+	game.state.start('Boot');
+
+	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth;
+
+};
+
+</script>
+
+</body>
+</html>
+<!-- <!DOCTYPE>
+<html>
+	<body>
+		<h1>This is my site</h1>
+	</body>
+</html> -->
